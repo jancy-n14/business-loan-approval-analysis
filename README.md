@@ -169,6 +169,6 @@ This project demonstrates how SQL can be used to analyze large historical loan d
 
 The project helped strengthen practical skills in SQL querying, data transformation, aggregation, JOINs, and window functions.
 
-### 🔗 Focus
+###  Focus
 
 **SQL-Based Analysis and Decision Support Framework**
