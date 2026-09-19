@@ -122,11 +122,8 @@ business-loan-approval-analysis/
 │
 ├── README.md
 │
-├── sql/
-│   └── business_loan_analysis.sql
-│
-└── screenshots/
-    └── project-results/
+└── sql/
+    └── business_loan_analysis.sql
 ```
 
  Conclusion
