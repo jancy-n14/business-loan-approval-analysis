@@ -1,25 +1,28 @@
 # Business Loan Approval Analysis
 
-## Project Overview
+### A SQL-Based Analysis and Decision Support Framework
 
-This project analyzes historical business loan data to understand borrower repayment patterns and factors associated with different loan outcomes.
+##  Project Overview
 
-The analysis uses SQL to clean, explore, aggregate, and analyze loan data, with the goal of supporting data-driven decision-making in business loan assessment.
+This project analyzes historical business loan data to understand loan outcomes, borrower characteristics, loan distribution, and lending patterns.
 
-## Objectives
+Using PostgreSQL and SQL, the project demonstrates how historical loan data can be cleaned, transformed, analyzed, and summarized to support data-driven decision-making.
 
-- Analyze historical business loan data
-- Understand loan repayment outcomes
-- Explore borrower and loan characteristics
-- Identify patterns across states, industries, and loan sizes
-- Use SQL to transform and analyze the dataset
-- Create a structured decision-support framework based on historical data
+##  Objectives
 
-## Dataset
+- Analyze historical business loan records.
+- Understand loan repayment outcomes.
+- Identify states and industries with higher numbers of loans.
+- Categorize loans based on approved loan amount.
+- Combine borrower and loan-status information using SQL JOINs.
+- Apply SQL window functions to analyze loan outcomes and identify top loan records.
+- Demonstrate SQL techniques used for business data analysis and decision support.
 
-The project uses historical SBA loan data stored in the `sba_loan_data` table.
+##  Dataset
 
-**Dataset size:** 899,165 loan records
+The dataset contains historical U.S. Small Business Administration (SBA) loan records.
+
+**Total Loan Records:** 899,165
 
 ### Key Loan Outcomes
 
@@ -30,55 +33,25 @@ The project uses historical SBA loan data stored in the `sba_loan_data` table.
 | Charged Off | 157,558 |
 | Average Approved Loan Amount | $192,686.82 |
 
-## Tools & Technologies
+##  Tools & Technologies
 
 - PostgreSQL
 - SQL
-- Data Cleaning
-- Exploratory Data Analysis
+- Data Cleaning & Transformation
 - Data Aggregation
-- Joins
-- Decision-support analysis
+- Data Analysis
+- Window Functions
+- SQL JOINs
 
 ##  Analysis Performed
 
-### 1. Geographic Analysis
+### 1. Loan Volume Analysis
 
-The analysis examined loan distribution across U.S. states and identified states with higher numbers of historical loans.
+Calculated the total number of historical loan records to understand the overall size of the dataset.
 
-### 2. Industry Analysis
+### 2. State-Level Analysis
 
-Loan records were analyzed using NAICS industry classifications to understand the distribution of loans across different business sectors.
-
-### 3. Loan Size Analysis
-
-Loans were grouped into:
-
-- Small
-- Medium
-- Large
-
-to examine differences in loan distribution.
-
-### 4. Loan Status Analysis
-
-Historical loan outcomes were examined using the `MIS_Status` field, including:
-
-- Paid In Full (P I F)
-- Charged Off (CHGOFF)
-
- 5. SQL Joins
-Separate subsets of loan status and borrower information were created and combined using an `INNER JOIN` to bring together:
-
-- Loan Number
-- Business Name
-- State
-- Lending Bank
-- Loan Status
-- Approved Loan Amount
-
- 📊 Key Findings
- Top States by Number of Loans
+Identified the top states based on the number of loan records.
 
 | State | Number of Loans |
 |---|---:|
@@ -93,29 +66,87 @@ Separate subsets of loan status and borrower information were created and combin
 | MN | 24,373 |
 | NJ | 24,035 |
 
- Loan Size Distribution
+### 3. Industry Analysis
+
+Analyzed loan distribution across NAICS industry codes to identify industries with higher numbers of loan records.
+
+### 4. Loan Size Classification
+
+Loans were categorized according to their approved loan amount:
+
+- **Small Loan:** Less than $50,000
+- **Medium Loan:** $50,000 – $200,000
+- **Large Loan:** Above $200,000
+
+### Loan Size Distribution
 
 | Loan Size | Number of Loans |
 |---|---:|
-| Medium | 376,690 |
 | Small | 279,942 |
+| Medium | 376,690 |
 | Large | 242,533 |
 
- SQL Skills Demonstrated
+### 5. SQL JOINs
 
-- CREATE TABLE
-- ALTER TABLE
-- UPDATE
-- DELETE
-- SELECT
-- WHERE conditions
-- Aggregations
-- GROUP BY
-- INNER JOIN
-- Data filtering and transformation
+Created separate borrower and loan-status subsets and combined them using an **INNER JOIN** based on the loan number.
+
+The resulting analysis brought together:
+
+- Loan Number
+- Business Name
+- State
+- Lending Bank
+- Loan Status
+- Approved Loan Amount
+
+### 6. Loan Outcome Cohorts
+
+Used SQL window functions to group loan records based on their historical loan outcomes:
+
+- **Paid In Full (P I F)**
+- **Charged Off (CHGOFF)**
+
+The analysis also calculated the count and percentage of records within each outcome group.
+
+### 7. Top Loan Records
+
+Used the `ROW_NUMBER()` window function to rank paid-in-full loan records based on approved loan amount and identify the top records.
+
+##  Key Findings
+
+### Top States by Number of Loans
+
+California had the highest number of loan records in the analyzed dataset, followed by Texas and New York.
+
+### Loan Size Distribution
+
+Medium-sized loans represented the largest loan-size category, followed by small and large loans.
+
+### Loan Outcomes
+
+The dataset contains both paid-in-full and charged-off loan records, allowing historical loan outcomes to be examined using SQL-based analysis.
+
+##  SQL Skills Demonstrated
+
+The project demonstrates practical use of:
+
+- `CREATE TABLE`
+- `ALTER TABLE`
+- `UPDATE`
+- `DELETE`
+- `SELECT`
+- `WHERE`
+- `GROUP BY`
+- Aggregate functions
+- Data transformation
+- `INNER JOIN`
+- `CASE` statements
 - Window functions
+- `ROW_NUMBER()`
+- Percentage calculations using window functions
+- Sorting and filtering
 
- Project Structure
+##  Project Structure
 
 ```text
 business-loan-approval-analysis/
@@ -126,11 +157,18 @@ business-loan-approval-analysis/
     └── business_loan_analysis.sql
 ```
 
- Conclusion
+##  SQL File
 
-The project demonstrates how SQL can be used to analyze historical business loan data, identify patterns in borrower and loan outcomes, and organize information into a structured decision-support framework.
+The complete SQL queries used for the analysis are available here:
 
----
+`sql/business_loan_analysis.sql`
 
-**Project:** Automating Business Loan Approval System Using Historical Borrower Data  
-**Focus:** SQL-Based Risk Assessment and Decision Support Framework
+##  Conclusion
+
+This project demonstrates how SQL can be used to analyze large historical loan datasets, identify patterns in loan outcomes, and organize information into a structured framework for data-driven decision support.
+
+The project helped strengthen practical skills in SQL querying, data transformation, aggregation, JOINs, and window functions.
+
+### 🔗 Focus
+
+**SQL-Based Analysis and Decision Support Framework**
